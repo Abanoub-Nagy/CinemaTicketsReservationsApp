@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.cinematicketsreservationsapp.ui.theme.Orange80
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,6 +28,6 @@ fun MovieCategoriesChip(
         selected = selected,
         onClick = onClick ?: {},
         shape = CircleShape,
-        label = { Text(title, fontWeight = FontWeight.Normal, color = textColor) }
+        label = { Text(title, fontWeight = FontWeight.Normal, color = textColor, fontSize = 12.sp) }
     )
 }
