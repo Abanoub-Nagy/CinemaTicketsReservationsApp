@@ -47,7 +47,7 @@ fun ImageButton(
             Text(
                 modifier = Modifier.padding(start = 8.dp),
                 text = text,
-                fontSize = textSize.sp,
+                fontSize = 12.sp,
                 color = TextWhite
             )
         }

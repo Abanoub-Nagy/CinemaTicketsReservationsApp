@@ -24,6 +24,7 @@ fun CustomButton(
     onclick: () -> Unit
 ) {
     Button(
+        modifier = Modifier.padding(vertical = 16.dp),
         contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
         onClick = onclick,
         colors = ButtonDefaults.buttonColors(containerColor = color, contentColor = Color.White)
@@ -32,7 +33,7 @@ fun CustomButton(
         Icon(painter = painterResource(id = iconDrawable), contentDescription = "")
         Text(
             text = text,
-            fontSize = 16.sp,
+            fontSize = 14.sp,
             modifier = Modifier.padding(start = 8.dp),
             textAlign = TextAlign.Center,
             fontFamily = poppins

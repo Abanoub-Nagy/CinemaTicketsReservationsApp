@@ -11,11 +11,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.rememberAsyncImagePainter
 import com.example.cinematicketsreservationsapp.R
 import com.example.cinematicketsreservationsapp.composable.BottomSheet
 import com.example.cinematicketsreservationsapp.composable.ImageButton
@@ -24,9 +23,10 @@ import com.example.cinematicketsreservationsapp.ui.theme.Orange80
 
 @Composable
 fun MovieDetailsScreen(
-    viewModel: DetailViewModel = hiltViewModel()
+    viewModel: DetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
+
     MovieDetailsContent(state = state) {
 
     }
@@ -53,7 +53,9 @@ private fun MovieDetailsContent(
         BottomSheet(
             modifier = Modifier.constrainAs(bottomSheet) {
                 top.linkTo(topGuideLine)
-            }
+
+            },
+            state.actors
         )
     }
 }
@@ -63,7 +65,7 @@ private fun Header(state: DetailUiState, modifier: Modifier = Modifier, closeBut
     Box(modifier = Modifier.aspectRatio(4f / 5f)) {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = rememberAsyncImagePainter(model = state.image),
+            painter = painterResource(id = R.drawable.poster),
             contentDescription = "avatar",
             contentScale = ContentScale.Crop
         )
@@ -82,10 +84,4 @@ private fun Header(state: DetailUiState, modifier: Modifier = Modifier, closeBut
 
         }
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun MovieDetailsScreenPreview() {
-    MovieDetailsScreen()
 }

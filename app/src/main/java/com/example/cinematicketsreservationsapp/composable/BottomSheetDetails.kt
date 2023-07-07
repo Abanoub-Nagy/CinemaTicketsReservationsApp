@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,10 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cinematicketsreservationsapp.R
 import com.example.cinematicketsreservationsapp.ui.theme.poppins
-import com.example.cinematicketsreservationsapp.util.Constant.DEFAULT_IMAGE
 
 @Composable
-fun BottomSheetDetails() {
+fun BottomSheetDetails(list: List<String>) {
     Column(modifier = Modifier.fillMaxSize()) {
 
         Box(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)) {
@@ -37,22 +37,22 @@ fun BottomSheetDetails() {
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Row() {
-                            Text(text = "6", fontSize = 16.sp)
-                            Text(text = "/10", color = Color.Gray, fontSize = 16.sp)
+                            Text(text = "6", fontSize = 14.sp)
+                            Text(text = "/10", color = Color.Gray, fontSize = 14.sp)
 
                         }
                         SpacerVertical4()
                         Text(text = "IMDB", color = Color.Gray, fontSize = 12.sp)
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(text = "63%", fontSize = 16.sp)
+                        Text(text = "63%", fontSize = 14.sp)
                         SpacerVertical4()
                         Text(text = "Rotten Tomatoes", color = Color.Gray, fontSize = 12.sp)
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Row() {
-                            Text(text = "4", fontSize = 16.sp)
-                            Text(text = "/10", color = Color.Gray, fontSize = 16.sp)
+                            Text(text = "4", fontSize = 14.sp)
+                            Text(text = "/10", color = Color.Gray, fontSize = 14.sp)
 
                         }
                         SpacerVertical4()
@@ -60,9 +60,9 @@ fun BottomSheetDetails() {
                     }
                 }
                 Text(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
+                    modifier = Modifier.padding(top = 16.dp),
                     text = "Fantastic Beasts: The\nSecrets of Dumbledore",
-                    fontSize = 16.sp,
+                    fontSize = 24.sp,
                     textAlign = TextAlign.Center
                 )
             }
@@ -78,24 +78,25 @@ fun BottomSheetDetails() {
         SpacerVertical16()
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(start = 24.dp),
+            contentPadding = PaddingValues(start = 24.dp, end = 24.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            items(20) { ActorImage(imageUrl = DEFAULT_IMAGE) }
+            items(list) { ActorImage(imageUrl = it) }
         }
         Column(
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
             Text(
                 text = "Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers.",
                 fontSize = 12.sp,
-                modifier = Modifier.padding(horizontal = 30.dp),
+                modifier = Modifier.padding(horizontal = 32.dp),
                 maxLines = 3,
                 textAlign = TextAlign.Center,
                 fontFamily = poppins
             )
+            SpacerHorizontal8()
             CustomButton(
                 "Booking",
                 iconDrawable = R.drawable.bitcoin_card

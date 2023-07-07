@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
@@ -18,8 +19,9 @@ fun ActorImage(
         painter = rememberAsyncImagePainter(model = imageUrl),
         contentDescription = "actor image",
         modifier = modifier
-            .size(60.dp)
+            .size(50.dp)
             .clip(CircleShape),
+        contentScale = ContentScale.FillWidth
     )
 
 }
