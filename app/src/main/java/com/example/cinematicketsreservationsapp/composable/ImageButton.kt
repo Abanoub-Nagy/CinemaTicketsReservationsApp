@@ -26,7 +26,6 @@ fun ImageButton(
     backgroundColor: Color = LightWhite,
     iconTint : Color = Color.White,
     text: String = "",
-    textSize : Int = 16,
     onClick: () -> Unit
 ) {
     Row(
