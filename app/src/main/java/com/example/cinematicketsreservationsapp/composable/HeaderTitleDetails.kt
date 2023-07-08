@@ -16,7 +16,7 @@ import com.example.cinematicketsreservationsapp.screens.details.DetailUiState
 import com.example.cinematicketsreservationsapp.ui.theme.Orange80
 
 @Composable
-fun Header(state: DetailUiState, modifier: Modifier = Modifier, closeButton: () -> Unit) {
+fun HeaderTitleDetails(state: DetailUiState, modifier: Modifier = Modifier, closeButton: () -> Unit) {
     Box(modifier = Modifier.aspectRatio(4f / 5f)) {
         Image(
             modifier = Modifier.fillMaxSize(),

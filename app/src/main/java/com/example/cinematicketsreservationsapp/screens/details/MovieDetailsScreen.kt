@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.cinematicketsreservationsapp.composable.BottomSheet
-import com.example.cinematicketsreservationsapp.composable.Header
+import com.example.cinematicketsreservationsapp.composable.HeaderTitleDetails
 
 @Composable
 fun MovieDetailsScreen(
@@ -29,9 +29,9 @@ private fun MovieDetailsContent(
 
         val (header, bottomSheet) = createRefs()
         val topGuideLine = createGuidelineFromTop(0.40f)
-        Header(
-           state = state,
-            modifier = Modifier.constrainAs(header){
+        HeaderTitleDetails(
+            state = state,
+            modifier = Modifier.constrainAs(header) {
                 top.linkTo(parent.top)
             }
         ) {
