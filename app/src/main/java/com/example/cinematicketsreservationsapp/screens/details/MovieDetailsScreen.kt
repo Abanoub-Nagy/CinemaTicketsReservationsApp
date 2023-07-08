@@ -5,10 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.cinematicketsreservationsapp.composable.BottomSheet
 import com.example.cinematicketsreservationsapp.composable.HeaderTitleDetails
+import com.example.cinematicketsreservationsapp.screens.home.HomeScreen
 
 @Composable
 fun MovieDetailsScreen(
@@ -45,4 +47,9 @@ private fun MovieDetailsContent(
             state.actors
         )
     }
+}
+@Preview(showSystemUi = true)
+@Composable
+fun previewMoviesScreen() {
+    MovieDetailsScreen()
 }
