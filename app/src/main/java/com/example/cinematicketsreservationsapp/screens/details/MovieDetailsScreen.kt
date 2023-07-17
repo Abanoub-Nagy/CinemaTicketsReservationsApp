@@ -34,7 +34,7 @@ private fun MovieDetailsContent(
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
         val (header, bottomSheet) = createRefs()
-        val topGuideLine = createGuidelineFromTop(0.38f)
+        val topGuideLine = createGuidelineFromTop(0.44f)
         HeaderTitleDetails(
             state = state,
             modifier = Modifier.constrainAs(header) {
