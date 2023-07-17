@@ -44,8 +44,12 @@ fun MovieDetails() {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        OutlineButton(modifier = Modifier.padding(end = 8.dp), text = "Fantasy") {}
-        OutlineButton(text = "Adventure") {}
+        OutlineButton(modifier = Modifier.padding(end = 8.dp), text = "Fantasy") {
+
+        }
+        OutlineButton(text = "Adventure") {
+
+        }
     }
 }
 
