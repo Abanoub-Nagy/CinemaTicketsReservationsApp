@@ -5,20 +5,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.example.cinematicketsreservationsapp.AppDestination
 import com.example.cinematicketsreservationsapp.composable.BottomSheet
+import com.example.cinematicketsreservationsapp.composable.BottomSheetDetails
 import com.example.cinematicketsreservationsapp.composable.HeaderTitleDetails
-import com.example.cinematicketsreservationsapp.screens.home.HomeScreen
 
 @Composable
 fun MovieDetailsScreen(
+    navController: NavHostController,
     viewModel: DetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
 
-    MovieDetailsContent(state = state) {}
+    MovieDetailsContent(state = state) {
+        navController.popBackStack(AppDestination.HomeScreen.route, false)
+    }
 
 }
 
@@ -30,7 +34,7 @@ private fun MovieDetailsContent(
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
         val (header, bottomSheet) = createRefs()
-        val topGuideLine = createGuidelineFromTop(0.40f)
+        val topGuideLine = createGuidelineFromTop(0.38f)
         HeaderTitleDetails(
             state = state,
             modifier = Modifier.constrainAs(header) {
@@ -39,17 +43,8 @@ private fun MovieDetailsContent(
         ) {
             closeButton()
         }
-        BottomSheet(
-            modifier = Modifier.constrainAs(bottomSheet) {
-                top.linkTo(topGuideLine)
-
-            },
-            state.actors
-        )
+        BottomSheet(modifier = Modifier.constrainAs(bottomSheet) { top.linkTo(topGuideLine) }) {
+            BottomSheetDetails()
+        }
     }
-}
-@Preview(showSystemUi = true)
-@Composable
-fun previewMoviesScreen() {
-    MovieDetailsScreen()
 }
