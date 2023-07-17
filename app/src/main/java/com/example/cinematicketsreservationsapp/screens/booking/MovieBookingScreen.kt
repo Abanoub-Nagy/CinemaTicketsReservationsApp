@@ -2,10 +2,12 @@ package com.example.cinematicketsreservationsapp.screens.booking
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,11 +30,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.cinematicketsreservationsapp.R
 import com.example.cinematicketsreservationsapp.composable.CinemaSeat
 import com.example.cinematicketsreservationsapp.composable.CustomButton
@@ -47,6 +49,7 @@ import com.example.cinematicketsreservationsapp.ui.theme.TakenSeatColor
 
 @Composable
 fun MovieBookingScreen(
+    navController: NavHostController,
     bookingViewModel: BookingViewModel = hiltViewModel(),
 ) {
     val bookingUiState by bookingViewModel.state.collectAsState()
@@ -57,7 +60,7 @@ fun MovieBookingScreen(
             .background(Color.Black)
     ) {
         val (infoCard, backButton, seats, seatsType, checkOut) = createRefs()
-        val startGuideline = createGuidelineFromBottom(0.35f)
+        val startGuideline = createGuidelineFromBottom(0.37f)
 
         Surface(
             color = LightWhite,
@@ -68,6 +71,9 @@ fun MovieBookingScreen(
                 .constrainAs(backButton) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
+                }
+                .clickable {
+                    navController.popBackStack()
                 }
         ) {
             Icon(
@@ -92,7 +98,7 @@ fun MovieBookingScreen(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(120.dp),
+                        .height(112.dp),
                     painter = painterResource(id = R.drawable.cinema),
                     contentDescription = ""
                 )
@@ -197,12 +203,11 @@ fun MovieBookingScreen(
                     start.linkTo(parent.start)
                 }
                 .fillMaxWidth()
-                .padding(bottom = 28.dp, start = 32.dp, end = 32.dp),
+                .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-
         ) {
-            Column {
+            Column(modifier = Modifier.padding(start = 16.dp)) {
                 Text(text = "$${bookingUiState.selectedSeatsId.size * 25.00}", fontSize = 24.sp)
                 Text(
                     text = "${bookingUiState.selectedSeatsId.size} tickets",
@@ -210,15 +215,9 @@ fun MovieBookingScreen(
                     color = Color.LightGray
                 )
             }
-
+            Spacer(modifier = Modifier.weight(1f))
             CustomButton("Buy Tickets", iconDrawable = R.drawable.bitcoin_card) {
             }
         }
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun previewMoviesScreen() {
-    MovieBookingScreen()
 }
