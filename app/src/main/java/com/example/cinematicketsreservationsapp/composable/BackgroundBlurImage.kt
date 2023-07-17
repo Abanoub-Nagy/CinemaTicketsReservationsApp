@@ -23,7 +23,7 @@ fun BackgroundBlurImage(state: HomeUiState, pagerState: PagerState) {
     Image(
         modifier = Modifier
             .fillMaxWidth()
-            .blur(40.dp),
+            .blur(25.dp),
         contentScale = ContentScale.Crop,
         painter = rememberAsyncImagePainter(model = state.movies[pagerState.currentPage].imageUrl),
         contentDescription = ""
@@ -44,8 +44,3 @@ fun BackgroundBlurImage(state: HomeUiState, pagerState: PagerState) {
     )
 }
 
-//@Preview(showSystemUi = true)
-//@Composable
-//fun HomeScreenPreview() {
-//    BackgroundBlurImage()
-//}

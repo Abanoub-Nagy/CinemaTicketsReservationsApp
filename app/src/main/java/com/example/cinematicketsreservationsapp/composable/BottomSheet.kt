@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BottomSheet(
     modifier: Modifier = Modifier,
-    list: List<String>
+    content: @Composable () -> Unit
 ) {
     Box(
         modifier = modifier
@@ -21,6 +21,6 @@ fun BottomSheet(
             .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
             .background(Color.White)
     ) {
-        BottomSheetDetails(list = list)
+        content()
     }
 }

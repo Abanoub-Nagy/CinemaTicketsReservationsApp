@@ -16,10 +16,14 @@ import com.example.cinematicketsreservationsapp.screens.details.DetailUiState
 import com.example.cinematicketsreservationsapp.ui.theme.Orange80
 
 @Composable
-fun HeaderTitleDetails(state: DetailUiState, modifier: Modifier = Modifier, closeButton: () -> Unit) {
+fun HeaderTitleDetails(
+    state: DetailUiState,
+    modifier: Modifier = Modifier,
+    closeButton: () -> Unit
+) {
     Box(modifier = Modifier.aspectRatio(4f / 5f)) {
         Image(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.poster),
             contentDescription = "avatar",
             contentScale = ContentScale.Crop

@@ -23,5 +23,4 @@ fun ActorImage(
             .clip(CircleShape),
         contentScale = ContentScale.FillWidth
     )
-
 }

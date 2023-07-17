@@ -24,8 +24,9 @@ fun ImageButton(
     painter: Int,
     modifier: Modifier = Modifier,
     backgroundColor: Color = LightWhite,
-    iconTint : Color = Color.White,
+    iconTint: Color = Color.White,
     text: String = "",
+    textSize: Int = 16,
     onClick: () -> Unit
 ) {
     Row(
@@ -46,7 +47,7 @@ fun ImageButton(
             Text(
                 modifier = Modifier.padding(start = 8.dp),
                 text = text,
-                fontSize = 12.sp,
+                fontSize = textSize.sp,
                 color = TextWhite
             )
         }

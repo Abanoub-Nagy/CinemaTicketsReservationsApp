@@ -23,11 +23,11 @@ import com.example.cinematicketsreservationsapp.ui.theme.SelectedChip
 @Composable
 fun TimeChip(
     time: String,
-    selectedTime:String,
+    selectedTime: String,
     onChecked: (String) -> Unit,
     selectedColor: Color = SelectedChip
 ) {
-    val isSelected = time==selectedTime
+    val isSelected = time == selectedTime
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -49,7 +49,7 @@ fun TimeChip(
             .clickable {
                 onChecked(time)
             }
-            .padding(horizontal = 12.dp , vertical = 8.dp)
+            .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
         Text(
             text = "$time:00",
@@ -58,8 +58,9 @@ fun TimeChip(
         )
     }
 }
+
 @Preview()
 @Composable
 fun TimePreview() {
-    TimeChip("14" , "12" , {})
+    TimeChip("14", "12", {})
 }

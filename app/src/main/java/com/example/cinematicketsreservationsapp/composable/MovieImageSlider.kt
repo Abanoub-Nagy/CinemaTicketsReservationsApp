@@ -1,11 +1,9 @@
 package com.example.cinematicketsreservationsapp.composable
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material3.Card
@@ -13,10 +11,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
-import coil.compose.rememberAsyncImagePainter
 import com.example.cinematicketsreservationsapp.screens.home.HomeUiState
 import kotlin.math.absoluteValue
 
@@ -26,7 +22,8 @@ fun MovieImageSlider(
     modifier: Modifier = Modifier,
     state: HomeUiState,
     pagerState: PagerState,
-    onItemClickListener: () -> Unit
+    onItemClickListener: () -> Unit,
+    content: @Composable (page: Int) -> Unit
 ) {
     HorizontalPager(
         modifier = modifier,
@@ -57,12 +54,7 @@ fun MovieImageSlider(
                 },
             elevation = CardDefaults.cardElevation(0.dp)
         ) {
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop,
-                painter = rememberAsyncImagePainter(model = state.movies[page].imageUrl),
-                contentDescription = ""
-            )
+            content(page)
         }
     }
 }
